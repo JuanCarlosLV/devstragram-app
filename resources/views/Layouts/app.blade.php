@@ -50,7 +50,7 @@
         </div>
     </header>
 
-    <main class="container mx-auto mt-4">
+    <main class="container mx-auto mt-4  max-w-screen-x">
         <h2 class="font-black text-center text-3xl mb-5">@yield('title')</h2>
         @yield('content')
     </main>
