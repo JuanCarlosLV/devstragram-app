@@ -42,7 +42,16 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
-            'password' => 'string',
         ];
     }
+
+
+    /* This is how we can relationed models. In this case we relationed the User model with the Post model. 
+    Why? Because a user can have many posts but a post can only have one user. So the method we use for this is hasMany() and we put the model of which the current model can have many of them, in this case the Post model.
+    In Eloquent this is called one to many relationship. In RM this is 1:N or 1:M
+    */
+    public function posts(){
+        return $this->hasMany(Post::class);
+    }
+
 }
