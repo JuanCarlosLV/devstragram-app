@@ -28,10 +28,26 @@ class Post extends Model
     with select() method we can define wich fields we want to get from the user model
 
     */
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class)->select([
-            'name', 'username'
+            'name',
+            'username'
         ]);
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+
+    public function checkLike(User $user)
+    {
+        return $this->likes->contains('user_id', $user->id);
+    }
 }
